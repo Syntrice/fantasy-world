@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : Area2D
+public partial class Player : CharacterBody2D
 {
     [Export] public float speed = 60;
 
@@ -15,8 +15,9 @@ public partial class Player : Area2D
     public override void _Process(double delta)
     {
         var velocity = GetMovementVector() * speed;
+        Velocity = velocity;
         UpdateAnimation(velocity);
-        Position += velocity * (float)delta;
+        MoveAndSlide();
     }
 
     /// <summary>
@@ -43,24 +44,29 @@ public partial class Player : Area2D
             return;
         }
 
-        switch (velocity.Y)
+        if (velocity.X != 0)
         {
-            case > 0:
-                _sprite.Play("move_down");
-                break;
-            case < 0:
-                _sprite.Play("move_up");
-                break;
+            switch (velocity.X)
+            {
+                case > 0:
+                    _sprite.Play("move_right");
+                    break;
+                case < 0:
+                    _sprite.Play("move_left");
+                    break;
+            }
         }
-
-        switch (velocity.X)
+        else
         {
-            case > 0:
-                _sprite.Play("move_right");
-                break;
-            case < 0:
-                _sprite.Play("move_left");
-                break;
+            switch (velocity.Y)
+            {
+                case > 0:
+                    _sprite.Play("move_down");
+                    break;
+                case < 0:
+                    _sprite.Play("move_up");
+                    break;
+            }
         }
     }
 }
