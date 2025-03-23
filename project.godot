@@ -11,10 +11,13 @@ config_version=5
 [application]
 
 config/name="FantasyWorld"
-run/main_scene="res://scene.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="FantasyWorld"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

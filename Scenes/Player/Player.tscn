@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds3hb7dxo5sb3"]
+
+[ext_resource type="SpriteFrames" uid="uid://dxw88fgqryrir" path="res://assets/player/player_sprite_frames.tres" id="1_rpqav"]
+
+[node name="Player" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_rpqav")
+animation = &"move_left"
+frame = 3
+frame_progress = 0.201109
